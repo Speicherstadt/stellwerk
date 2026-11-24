@@ -11,7 +11,7 @@ einrichten, frag uns nach einem Partner oder nach dem gehosteten Betrieb (info@t
 ## Partnerprogramm
 
 IT-Dienstleister und Hoster, die Stellwerk für ihre Kunden einrichten wollen, können Partner
-werden: siehe das [Partnerprogramm](https://speicherstadt.app/partner/).
+werden: siehe das [Partnerprogramm](https://speicherstadt.org/partner/).
 
 ## Fragen
 
