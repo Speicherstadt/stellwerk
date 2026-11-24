@@ -9,14 +9,14 @@ Eine zentrale Weboberfläche für Syncthing auf deinem Server: Open Source, ohne
 [![CI](https://github.com/Speicherstadt/stellwerk/actions/workflows/ci.yml/badge.svg)](https://github.com/Speicherstadt/stellwerk/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/Speicherstadt/stellwerk?logo=github&label=release)](https://github.com/Speicherstadt/stellwerk/releases/latest)
 [![Lizenz: AGPL-3.0](https://img.shields.io/badge/Lizenz-AGPL--3.0-blue)](LICENSE)
-[![Doku](https://img.shields.io/badge/Doku-speicherstadt.app%2Fstellwerk-4f46e5?logo=zensical&logoColor=white)](https://speicherstadt.app/stellwerk/)
+[![Doku](https://img.shields.io/badge/Doku-speicherstadt.org%2Fstellwerk-4f46e5?logo=zensical&logoColor=white)](https://speicherstadt.org/stellwerk/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/tristanteu/stellwerk?logo=docker&logoColor=white)](https://hub.docker.com/r/tristanteu/stellwerk)
 
 [Warum?](#warum-stellwerk) •
 [Funktionen](#funktionen) •
 [Schnellstart](#schnellstart) •
 [FAQ](#faq) •
-[Dokumentation](https://speicherstadt.app/stellwerk/) •
+[Dokumentation](https://speicherstadt.org/stellwerk/) •
 [Entwicklung](#entwicklung)
 
 <picture>
@@ -44,14 +44,14 @@ Verwaltungskonsole, aber nur kommerziell und als Closed Source.
 
 ## Funktionen
 
-Kurz je Bereich; die Details stehen auf der verlinkten Seite der [Dokumentation](https://speicherstadt.app/stellwerk/).
+Kurz je Bereich; die Details stehen auf der verlinkten Seite der [Dokumentation](https://speicherstadt.org/stellwerk/).
 
 | Bereich | Was Stellwerk kann |
 |---|---|
-| 🗺️ [Eine Matrix für alles](https://speicherstadt.app/stellwerk/user-guide.html#the-matrix) | Ordner × Geräte, ein Klick pro Zelle für beide Richtungen, nur senden, nur empfangen oder aus; den Ordner auf einem PC wählst du per Klick durch seine Verzeichnisse; Änderungen sammeln sich als Entwurf und gehen als eine nummerierte Revision hinaus; ein ausgeschaltetes Gerät holt auf, sobald es wieder an ist |
-| 🔗 [Koppeln, ohne auf jedem PC zu klicken](https://speicherstadt.app/stellwerk/user-guide.html#pair-device) | Ein Befehl pro Gerät mit einem Code, der 15 Minuten gilt, auch hinter eigener CA; im LAN ohne Code über mDNS; der Agent startet bei der Anmeldung ohne Administratorrechte unter Linux, macOS und Windows und meldet sich mit seinem eigenen Ed25519-Schlüssel an; API-Tokens für Skripte, nur lesend oder mit dem Recht, Ordner und Freigaben zu verwalten |
-| 🤖 [Claude und andere Assistenten (MCP)](https://speicherstadt.app/stellwerk/user-guide.html#claude-code-and-other-assistants-mcp) | MCP-Server unter `/mcp` eingebaut: Der Assistent sucht auf dem Gerät nach dem Namen, legt den Ordner an und zeigt eine Vorschau mit der Größe; nur ein Token mit Verwaltungsrecht wendet an, Geräte, Koppeln und Löschen bleiben der Anmeldung im Browser vorbehalten |
-| 🗄️ [Der Server hat alles](https://speicherstadt.app/stellwerk/user-guide.html#overview) | Vollständige Kopie jedes Ordners mit Versionen für ein Jahr; Live-Status je Ordner und Gerät und ein Aktivitätsverlauf; [Konflikte](https://speicherstadt.app/stellwerk/user-guide.html#conflicts) nebeneinander mit Diff, jede ältere Version wiederherstellbar; Deutsch und Englisch, hell und dunkel; das eigene Syncthing des Agenten fasst eines, das du schon betreibst, nie an |
+| 🗺️ [Eine Matrix für alles](https://speicherstadt.org/stellwerk/user-guide.html#the-matrix) | Ordner × Geräte, ein Klick pro Zelle für beide Richtungen, nur senden, nur empfangen oder aus; den Ordner auf einem PC wählst du per Klick durch seine Verzeichnisse; Änderungen sammeln sich als Entwurf und gehen als eine nummerierte Revision hinaus; ein ausgeschaltetes Gerät holt auf, sobald es wieder an ist |
+| 🔗 [Koppeln, ohne auf jedem PC zu klicken](https://speicherstadt.org/stellwerk/user-guide.html#pair-device) | Ein Befehl pro Gerät mit einem Code, der 15 Minuten gilt, auch hinter eigener CA; im LAN ohne Code über mDNS; der Agent startet bei der Anmeldung ohne Administratorrechte unter Linux, macOS und Windows und meldet sich mit seinem eigenen Ed25519-Schlüssel an; API-Tokens für Skripte, nur lesend oder mit dem Recht, Ordner und Freigaben zu verwalten |
+| 🤖 [Claude und andere Assistenten (MCP)](https://speicherstadt.org/stellwerk/user-guide.html#claude-code-and-other-assistants-mcp) | MCP-Server unter `/mcp` eingebaut: Der Assistent sucht auf dem Gerät nach dem Namen, legt den Ordner an und zeigt eine Vorschau mit der Größe; nur ein Token mit Verwaltungsrecht wendet an, Geräte, Koppeln und Löschen bleiben der Anmeldung im Browser vorbehalten |
+| 🗄️ [Der Server hat alles](https://speicherstadt.org/stellwerk/user-guide.html#overview) | Vollständige Kopie jedes Ordners mit Versionen für ein Jahr; Live-Status je Ordner und Gerät und ein Aktivitätsverlauf; [Konflikte](https://speicherstadt.org/stellwerk/user-guide.html#conflicts) nebeneinander mit Diff, jede ältere Version wiederherstellbar; Deutsch und Englisch, hell und dunkel; das eigene Syncthing des Agenten fasst eines, das du schon betreibst, nie an |
 
 ## Screenshots
 
@@ -87,7 +87,7 @@ ein NAS, ein Mini-PC, ein Raspberry Pi 4/5, ein VPS. Geräte: Linux, Windows und
 ### 1. Von einem Agenten aufsetzen lassen
 
 Gib Claude Code oder einem anderen Coding-Agenten dieses Repository und SSH-Zugang zu deinem Server und sag:
-„Setz Stellwerk auf meinem Server auf, nach der [Installationsanleitung](https://speicherstadt.app/stellwerk/installation.html).“
+„Setz Stellwerk auf meinem Server auf, nach der [Installationsanleitung](https://speicherstadt.org/stellwerk/installation.html).“
 Läuft es, füge den MCP-Server der Zentrale mit dem Befehl, der beim Anlegen eines Tokens erscheint,
 zu Claude Code hinzu und sag dann „Synchronisiere Game of Thrones vom NAS auf meinen Laptop“.
 
@@ -124,16 +124,16 @@ curl -fsSL https://github.com/Speicherstadt/stellwerk/releases/download/vX.Y.Z/i
 
 Unter Windows zeigt der Dialog dasselbe als PowerShell-Befehl; außerdem gibt es einen Installer,
 der nach Adresse und Code fragt. Podman Quadlet, ein Reverse Proxy mit HTTPS, Backups und Updates
-stehen in der [Installationsanleitung](https://speicherstadt.app/stellwerk/installation.html); ein
+stehen in der [Installationsanleitung](https://speicherstadt.org/stellwerk/installation.html); ein
 erster Durchlauf Schritt für Schritt steht unter
-[Erste Schritte](https://speicherstadt.app/stellwerk/getting-started.html).
+[Erste Schritte](https://speicherstadt.org/stellwerk/getting-started.html).
 
 > **Vor v1.0**: Jedes [Release](https://github.com/Speicherstadt/stellwerk/releases) veröffentlicht
 > das Image `tristanteu/stellwerk` und enthält die Agenten. Alles funktioniert und ist unter Linux,
 > Windows und macOS getestet; das Selbst-Update des Agenten unter Windows ist das letzte Stück vor v1.0
-> ([Roadmap](https://speicherstadt.app/stellwerk/architecture.html#roadmap)).
+> ([Roadmap](https://speicherstadt.org/stellwerk/architecture.html#roadmap)).
 
-Keinen eigenen Server oder keine eigene IT? Stellwerk gibt es auf Anfrage gehostet oder über einen IT-Dienstleister aus dem [Partnerprogramm](https://speicherstadt.app/partner/).
+Keinen eigenen Server oder keine eigene IT? Stellwerk gibt es auf Anfrage gehostet oder über einen IT-Dienstleister aus dem [Partnerprogramm](https://speicherstadt.org/partner/).
 
 ## FAQ
 
@@ -181,7 +181,7 @@ den Sync-Port des Hubs.
 Bei der Übertragung ja: Syncthing verschlüsselt jede Übertragung mit TLS und nimmt nur bekannte
 Geräte an; die Weboberfläche und die Verbindung der Agenten laufen über deinen HTTPS-Proxy. Auf dem
 Server hält der Hub eine normale Kopie jedes Ordners, schütze den Server also wie die Geräte.
-Details unter [Sicherheit](https://speicherstadt.app/stellwerk/security.html).
+Details unter [Sicherheit](https://speicherstadt.org/stellwerk/security.html).
 </details>
 
 <details>
@@ -193,15 +193,15 @@ und werden abgeglichen, sobald der Server wieder da ist.
 
 ## Dokumentation
 
-Alles im Detail, mit Suche: **[speicherstadt.app/stellwerk](https://speicherstadt.app/stellwerk/)**. Jede Funktion oben verlinkt ihre Seite; dazu kommen:
+Alles im Detail, mit Suche: **[speicherstadt.org/stellwerk](https://speicherstadt.org/stellwerk/)**. Jede Funktion oben verlinkt ihre Seite; dazu kommen:
 
-- **Einstieg:** [Erste Schritte](https://speicherstadt.app/stellwerk/getting-started.html) (von null bis zum ersten abgeglichenen Ordner),
-  [Installation](https://speicherstadt.app/stellwerk/installation.html) (Docker Compose, Podman Quadlet, Programmdatei; Reverse Proxy und TLS; der Agent auf jedem System; Updates und Backups)
-- **Nachschlagen:** [Referenz](https://speicherstadt.app/stellwerk/reference.html) (jede Option, jeder Port, jede Datei und jede Grenze),
-  [Sicherheit](https://speicherstadt.app/stellwerk/security.html) (Vertrauensmodell, Verschlüsselung, Anmeldung, Koppeln),
-  [Fehlersuche](https://speicherstadt.app/stellwerk/troubleshooting.html) (Logs und die häufigen Probleme)
-- **Hintergrund:** [Architektur](https://speicherstadt.app/stellwerk/architecture.html) (Zentrale, Hub, Agent und Engine; Protokoll; Reconciler; Roadmap),
-  [Entwicklung](https://speicherstadt.app/stellwerk/development.html) (Bauen, Tests, CI, Releases)
+- **Einstieg:** [Erste Schritte](https://speicherstadt.org/stellwerk/getting-started.html) (von null bis zum ersten abgeglichenen Ordner),
+  [Installation](https://speicherstadt.org/stellwerk/installation.html) (Docker Compose, Podman Quadlet, Programmdatei; Reverse Proxy und TLS; der Agent auf jedem System; Updates und Backups)
+- **Nachschlagen:** [Referenz](https://speicherstadt.org/stellwerk/reference.html) (jede Option, jeder Port, jede Datei und jede Grenze),
+  [Sicherheit](https://speicherstadt.org/stellwerk/security.html) (Vertrauensmodell, Verschlüsselung, Anmeldung, Koppeln),
+  [Fehlersuche](https://speicherstadt.org/stellwerk/troubleshooting.html) (Logs und die häufigen Probleme)
+- **Hintergrund:** [Architektur](https://speicherstadt.org/stellwerk/architecture.html) (Zentrale, Hub, Agent und Engine; Protokoll; Reconciler; Roadmap),
+  [Entwicklung](https://speicherstadt.org/stellwerk/development.html) (Bauen, Tests, CI, Releases)
 
 ## Entwicklung
 
@@ -225,11 +225,11 @@ bun run e2e                       # Playwright gegen die Oberfläche im Demomodu
 Rust-Workspace: `protocol` (Nachrichten, Soll-Zustand), `engine` (Steuerung von Syncthing und
 Reconciler), `agent`, `zentrale` (axum, SQLite); React-Oberfläche in `web/`, eingebettet in die
 Zentrale. Eine echte Zentrale und einen Agenten lokal betreiben, die Tests und Releases:
-[Entwicklung](https://speicherstadt.app/stellwerk/development.html).
+[Entwicklung](https://speicherstadt.org/stellwerk/development.html).
 
 ## Mehr von uns
 
-Weitere Open-Source-Apps für deinen eigenen Server, etwa für Buchhaltung, Mail, Office-Dokumente und mehr: **[speicherstadt.app](https://speicherstadt.app)**
+Weitere Open-Source-Apps für deinen eigenen Server, etwa für Buchhaltung, Mail, Office-Dokumente und mehr: **[speicherstadt.org](https://speicherstadt.org)**
 
 ## Mitwirken
 
@@ -257,7 +257,7 @@ Versionen von Stellwerk und Syncthing und was die Zentrale angezeigt hat. Bitte 
 
 <sub>Lizenz: <a href="LICENSE">AGPL-3.0</a> · © Tristan Teufel und Contributors<br>
 Geänderte Fassungen, die du weitergibst oder für andere betreibst, müssen ihren Quellcode unter der AGPL anbieten.<br>
-Für IT-Dienstleister und Hoster: <a href="https://speicherstadt.app/partner/">Partnerprogramm</a>.<br>
+Für IT-Dienstleister und Hoster: <a href="https://speicherstadt.org/partner/">Partnerprogramm</a>.<br>
 Stellwerk steht in keiner Verbindung zur Syncthing Foundation, zu Resilio, Seafile, Nextcloud oder SyncWings; die Namen sind Marken ihrer Inhaber.</sub>
 
 </div>
