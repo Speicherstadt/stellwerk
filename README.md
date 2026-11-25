@@ -6,6 +6,7 @@
 Projektordner, Vorlagen und Pläne im Büro wie auf dem Laptop an der Baustelle; du legst einmal fest, wer welchen Ordner bekommt.<br>
 Eine zentrale Weboberfläche für Syncthing auf deinem Server: Open Source, ohne Cloud, ohne auf jedem Rechner „annehmen“ zu klicken.
 
+![Status: Beta](https://img.shields.io/badge/Status-Beta-orange)
 [![CI](https://github.com/Speicherstadt/stellwerk/actions/workflows/ci.yml/badge.svg)](https://github.com/Speicherstadt/stellwerk/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/Speicherstadt/stellwerk?logo=github&label=release)](https://github.com/Speicherstadt/stellwerk/releases/latest)
 [![Lizenz: AGPL-3.0](https://img.shields.io/badge/Lizenz-AGPL--3.0-blue)](LICENSE)
@@ -25,6 +26,10 @@ Eine zentrale Weboberfläche für Syncthing auf deinem Server: Open Source, ohne
 </picture>
 
 </div>
+
+> [!WARNING]
+> **Beta:** Stellwerk wird noch stark weiterentwickelt. Vor jedem Update ein Backup machen
+> ([Sichern und wiederherstellen](https://speicherstadt.org/stellwerk/installation.html#sichern-und-wiederherstellen)).
 
 ## Warum Stellwerk?
 
