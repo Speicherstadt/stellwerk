@@ -9,6 +9,7 @@
     "dev": "vite",
     "dev:demo": "vite --mode demo",
     "build": "vite build",
+    "build:demo": "VITE_DEMO_SITE=1 vite build --mode demo --base /stellwerk/demo/ --outDir dist-demo",
     "typecheck": "bun run i18n && tsc --noEmit",
     "lint": "biome check .",
     "test": "bun run i18n && vitest run",

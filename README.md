@@ -11,10 +11,12 @@ Eine zentrale Weboberfläche für Syncthing auf deinem Server: Open Source, ohne
 [![Release](https://img.shields.io/github/v/release/Speicherstadt/stellwerk?logo=github&label=release)](https://github.com/Speicherstadt/stellwerk/releases/latest)
 [![Lizenz: AGPL-3.0](https://img.shields.io/badge/Lizenz-AGPL--3.0-blue)](LICENSE)
 [![Doku](https://img.shields.io/badge/Doku-speicherstadt.org%2Fstellwerk-4f46e5?logo=zensical&logoColor=white)](https://speicherstadt.org/stellwerk/)
+[![Demo](https://img.shields.io/badge/Demo-im%20Browser-1f6f5c)](https://speicherstadt.org/stellwerk/demo/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/tristanteu/stellwerk?logo=docker&logoColor=white)](https://hub.docker.com/r/tristanteu/stellwerk)
 
 [Warum?](#warum-stellwerk) •
 [Funktionen](#funktionen) •
+[Demo](https://speicherstadt.org/stellwerk/demo/) •
 [Schnellstart](#schnellstart) •
 [FAQ](#faq) •
 [Dokumentation](https://speicherstadt.org/stellwerk/) •
