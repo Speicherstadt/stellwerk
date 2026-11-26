@@ -1,6 +1,7 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useNavigate } from "@tanstack/react-router";
 import {
+  FlaskConical,
   Folder,
   KeyRound,
   Languages,
@@ -24,8 +25,34 @@ const navLink =
   "flex min-h-9 items-center gap-2.5 rounded-md px-2.5 py-2 text-zinc-700 hover:bg-muted dark:text-zinc-300 [&_svg]:size-4";
 const navActive = "bg-muted font-medium text-foreground";
 
+const INSTALLATION_URL = "https://speicherstadt.org/stellwerk/installation.html";
+const IS_DEMO_SITE = import.meta.env.VITE_DEMO_SITE === "1";
+
 function hostOf(address: string): string {
   return address.replace(/^\w+:\/\//, "").replace(/:\d+$/, "");
+}
+
+function DemoNotice() {
+  return (
+    <section
+      aria-label={m.demo_notice_title()}
+      className="flex flex-col gap-1 rounded-lg border border-border bg-background p-3 text-xs text-muted-foreground"
+    >
+      <span className="flex items-center gap-1.5 font-medium text-foreground">
+        <FlaskConical className="size-3.5" aria-hidden="true" />
+        {m.demo_notice_title()}
+      </span>
+      <span>{m.demo_notice_text()}</span>
+      <a
+        href={INSTALLATION_URL}
+        target="_blank"
+        rel="noreferrer"
+        className="text-foreground underline"
+      >
+        {m.demo_notice_install()}
+      </a>
+    </section>
+  );
 }
 
 export function Layout({ children }: { children: ReactNode }) {
@@ -103,6 +130,7 @@ export function Layout({ children }: { children: ReactNode }) {
           </Link>
         </nav>
         <div className="mt-auto flex flex-col gap-3">
+          {IS_DEMO_SITE && <DemoNotice />}
           <div className="flex flex-col gap-1 rounded-lg border border-border bg-background p-3">
             <div className="flex items-center gap-2 font-medium" role="status">
               <span
@@ -134,10 +162,12 @@ export function Layout({ children }: { children: ReactNode }) {
             </select>
           </label>
           <ThemeSwitch />
-          <Button variant="ghost" className="justify-start" onClick={logout}>
-            <LogOut aria-hidden="true" />
-            {m.logout()}
-          </Button>
+          {!IS_DEMO_SITE && (
+            <Button variant="ghost" className="justify-start" onClick={logout}>
+              <LogOut aria-hidden="true" />
+              {m.logout()}
+            </Button>
+          )}
           <span className="px-2.5 text-xs text-muted-foreground">
             {m.app_version({ version: overview?.version ?? "…" })}
           </span>

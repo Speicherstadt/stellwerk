@@ -24,6 +24,7 @@ use_directory_urls: false
 
 nav:
   - Start: index.md
+  - Überblick: overview.md
   - Erste Schritte: getting-started.md
   - Bedienung: user-guide.md
   - Installation: installation.md
@@ -36,6 +37,7 @@ nav:
 
 theme:
   name: material
+  custom_dir: overrides
   language: de
   logo: assets/icon.svg
   favicon: assets/icon.svg

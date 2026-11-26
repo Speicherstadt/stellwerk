@@ -1,5 +1,5 @@
 import { QueryClientProvider } from "@tanstack/react-query";
-import { createRouter, RouterProvider } from "@tanstack/react-router";
+import { createHashHistory, createRouter, RouterProvider } from "@tanstack/react-router";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createQueryClient } from "./api/client";
@@ -15,12 +15,15 @@ const queryClient = createQueryClient(() => {
   queryClient.removeQueries({ queryKey: sessionQuery.queryKey });
   void router.navigate({ to: "/login" });
 });
+// The static demo on GitHub Pages (`bun run build:demo`) lives under /stellwerk/demo/, which has
+// no server fallback to index.html for sub-routes: there the routes live in the hash.
 const router = createRouter({
   routeTree,
   context: { queryClient },
   defaultPreload: "intent",
   defaultErrorComponent: RouteError,
   defaultNotFoundComponent: NotFound,
+  ...(import.meta.env.VITE_DEMO_SITE === "1" ? { history: createHashHistory() } : {}),
 });
 
 declare module "@tanstack/react-router" {

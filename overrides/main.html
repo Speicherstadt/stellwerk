@@ -1,0 +1,77 @@
+{#- For search engines and link previews (messenger, mail, social networks).
+    Title and description come from each page's front matter (`title:`, `description:`), falling
+    back to site_name and site_description. The preview image defaults to social-preview.png
+    (1280 × 640); a page can override it with `image:`. -#}
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {%- set seo_title = (page.meta.title if page and page.meta and page.meta.title else page.title) if page else config.site_name -%}
+  {%- set seo_description = page.meta.description if page and page.meta and page.meta.description else config.site_description -%}
+  {%- set seo_image = config.site_url ~ (page.meta.image if page and page.meta and page.meta.image else "social-preview.png") -%}
+  {%- set seo_url = page.canonical_url if page and page.canonical_url else config.site_url -%}
+  {#- Zensical exposes page.url and page.canonical_url rather than page.is_homepage -#}
+  {%- set is_home = page and page.url == "index.html" -%}
+  {%- if not page or not page.canonical_url %}
+    {#- The 404 page has no canonical_url and should not be indexed -#}
+    <meta name="robots" content="noindex">
+  {%- endif %}
+  <meta property="og:type" content="{{ 'website' if is_home else 'article' }}">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="{{ config.site_name }}">
+  <meta property="og:title" content="{{ config.site_name }}: {{ seo_title }}">
+  <meta property="og:description" content="{{ seo_description }}">
+  <meta property="og:url" content="{{ seo_url }}">
+  <meta property="og:image" content="{{ seo_image }}">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="640">
+  <meta property="og:image:alt" content="{{ config.site_name }}: zentrale Weboberfläche für Syncthing, selbst gehostet">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ config.site_name }}: {{ seo_title }}">
+  <meta name="twitter:description" content="{{ seo_description }}">
+  <meta name="twitter:image" content="{{ seo_image }}">
+  {%- if is_home %}
+  <script type="application/ld+json">
+    {{ {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": config.site_url ~ "#website",
+          "name": config.site_name,
+          "url": config.site_url,
+          "inLanguage": "de",
+          "description": config.site_description
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": config.site_url ~ "#software",
+          "name": config.site_name,
+          "url": config.site_url,
+          "description": config.site_description,
+          "applicationCategory": "UtilitiesApplication",
+          "applicationSubCategory": "Dateisynchronisation",
+          "operatingSystem": "Linux, Windows, macOS, Docker, Podman",
+          "inLanguage": "de",
+          "isAccessibleForFree": true,
+          "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+          "image": seo_image,
+          "screenshot": config.site_url ~ "screenshot.png",
+          "downloadUrl": "https://hub.docker.com/r/tristanteu/stellwerk",
+          "installUrl": config.site_url ~ "installation.html",
+          "softwareHelp": config.site_url ~ "overview.html",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+          "featureList": [
+            "Zentrale Matrix aus Ordnern und Geräten für Syncthing",
+            "Geräte koppeln per Einmal-Code oder mDNS im LAN",
+            "Hub-Syncthing auf dem Server mit Versionierung für ein Jahr",
+            "Live-Status, Aktivitätsverlauf und Konfliktlösung mit Diff",
+            "Agenten für Linux, Windows und macOS ohne Administratorrechte",
+            "API-Tokens und eingebauter MCP-Server"
+          ],
+          "sameAs": [config.repo_url]
+        }
+      ]
+    } | tojson }}
+  </script>
+  {%- endif %}
+{% endblock %}
