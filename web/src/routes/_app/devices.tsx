@@ -43,7 +43,7 @@ function Devices() {
             placeholder={m.devices_search()}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="h-10 w-full rounded-md border border-border bg-background pr-3 pl-9"
+            className="h-9 w-full rounded-md border border-border bg-background pr-3 pl-9"
           />
         </label>
         <fieldset className="flex gap-1 rounded-lg bg-muted p-1">
