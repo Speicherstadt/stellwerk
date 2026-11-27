@@ -243,9 +243,8 @@ Weitere Open-Source-Apps für deinen eigenen Server, etwa für Buchhaltung, Mail
 ## Mitwirken
 
 Issues und Pull Requests sind willkommen. Ein guter Fehlerbericht nennt das Betriebssystem, die
-Versionen von Stellwerk und Syncthing und was die Zentrale angezeigt hat. Bitte führe
-`cargo fmt --all --check`, `cargo clippy --all-targets -- -D warnings`, `cargo test` und
-`bun run check` aus, bevor du einen Pull Request öffnest.
+Versionen von Stellwerk und Syncthing und was die Zentrale angezeigt hat. Wie ein Beitrag entsteht
+und welche Prüfungen vorher laufen: [Mitwirken](https://speicherstadt.org/stellwerk/mitwirken.html).
 
 ## Sterne im Verlauf
 
