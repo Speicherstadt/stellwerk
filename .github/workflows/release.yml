@@ -62,3 +62,16 @@ jobs:
       release-artifact: agents
     permissions:
       contents: write
+
+  # Eine fertige Version schließt die Issues, die seit der vorigen mit `Umgesetzt #…` gemergt wurden
+  # (Werkbank); ein Lauf von Hand ohne Tag schließt nichts
+  issues-schliessen:
+    needs: attach
+    if: ${{ !cancelled() && needs.attach.result == 'success' }}
+    uses: Speicherstadt/werkbank/.github/workflows/issues-schliessen.yml@main
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: read
+    with:
+      tag: ${{ github.ref_name }}

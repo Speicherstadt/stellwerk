@@ -8,7 +8,7 @@ name: Agents
 on:
   push:
     branches: [main]
-    paths-ignore: ["**.md", "docs/**", "LICENSE"]
+    paths-ignore: ["**.md", "docs/**", "LICENSE", ".agents/**", ".claude/**", ".github/werkbank.json"]
   workflow_call:
   workflow_dispatch:
 

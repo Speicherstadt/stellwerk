@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Which parts of CI a pull request needs, as GitHub Actions outputs (rust=, web=, docker=).
 # Called with the pull request's base commit (and the head, HEAD by default); without a base (a
-# push to main, a run by hand, the release) everything runs. Documentation counts for none. A part is skipped only when no changed file can affect it, so a file
-# no rule knows runs everything.
+# push to main, a run by hand, the release) everything runs. Documentation, the agents' skills and
+# settings (.agents/, .claude/, .github/werkbank.json) count for none. A part is skipped only when no
+# changed file can affect it, so a file no rule knows runs everything.
 set -euo pipefail
 
 base="${1:-}"
@@ -14,7 +15,7 @@ if [[ -z "$base" ]] || ! git cat-file -e "$base^{commit}" 2>/dev/null; then
 fi
 
 files=$(git diff --name-only "$base" "$head" |
-    grep -vE '^(docs/|LICENSE$|mkdocs\.yml$|requirements-docs\.txt$|scripts/docs-revision-date/)|\.md$' || true)
+    grep -vE '^(docs/|LICENSE$|mkdocs\.yml$|requirements-docs\.txt$|scripts/docs-revision-date/|\.agents/|\.claude/|\.github/werkbank\.json$)|\.md$' || true)
 # Files only the UI checks depend on, and files only the Rust jobs depend on
 web_only='^(web/|e2e/|package\.json$|bun\.lock$|bunfig\.toml$)'
 rust_only='^(crates/|Cargo\.toml$|Cargo\.lock$|installer/|scripts/service-smoke\.sh$|\.cargo/)'

@@ -3,10 +3,10 @@ name: CI
 on:
   push:
     branches: [main]            # not every branch, pull requests build through pull_request
-    paths-ignore: ["**.md", "docs/**", "LICENSE"]
+    paths-ignore: ["**.md", "docs/**", "LICENSE", ".agents/**", ".claude/**", ".github/werkbank.json"]
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
-    paths-ignore: ["**.md", "docs/**", "LICENSE"]
+    paths-ignore: ["**.md", "docs/**", "LICENSE", ".agents/**", ".claude/**", ".github/werkbank.json"]
   workflow_call:                # release.yml runs it when main's CI did not test the release
   workflow_dispatch:
 
@@ -111,24 +111,21 @@ jobs:
       - run: bun run --filter web test
       - run: bun run --filter web build
 
-  # The rules of firsttris/workflows' checks (README, "Checks") on every pull request and push, Rust
-  # and UI alike: files past 400 lines, the interface texts; on a pull request also the hints on
-  # long functions, grown files, code without docs and fixes without tests
+  # Die Regeln der Checks aus firsttris/workflows (README, „Checks“) bei jedem Pull Request und Push,
+  # für Rust und Oberfläche: Dateien über 400 Zeilen, Texte der Oberfläche, Ringe zwischen Modulen.
+  # Die Hinweise am Pull Request (lange Funktionen, gewachsene Dateien, Code ohne Doku, Fix ohne
+  # Test) gibt „PR-Regeln“ aus der Werkbank (pr-regeln.yml, .github/werkbank.json).
   checks:
     if: ${{ !github.event.pull_request.draft }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version-file: package.json
       - run: bun install --frozen-lockfile
       - run: bun checks
-      - if: github.event_name == 'pull_request'
-        run: bun checks pr
 
   # The UI in demo mode in the official Playwright image of the version in the lockfile
   e2e-image:
