@@ -45,7 +45,7 @@ auschecken und die Quelldatei in Kommentaren und Commit-Nachrichten nennen, wo s
 - Eine Abhängigkeit hinzufügen, ohne zuerst eigenen Code zu versuchen und den Grund je Paket unter
   „## Neue Abhängigkeiten“ im Pull Request zu nennen.
 - Befehle als root (`sudo`, `pkexec`) ausführen oder umgehen; die führt die Nutzerin oder der Nutzer aus. Laufende
-  Prozesse von ihnen stoppen; für Tests andere Ports nehmen.
+  Prozesse von ihnen stoppen, statt für Tests andere Ports zu nehmen.
 - **Ein Test-Syncthing auf den Standard-Ports 8384 (GUI) oder 22000 (Sync) starten.** Immer
   `engine::process::SpawnOptions::isolated`: zufällige Ports auf 127.0.0.1 vom System, Discovery, Relays und NAT aus.
 - **Ein Syncthing anfassen, das schon läuft** (das eigene der Nutzerin oder des Nutzers oder eines aus einem anderen
