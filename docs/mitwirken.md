@@ -10,7 +10,7 @@ Vor jedem Push dieselben Prüfungen wie in der CI; die Befehle stehen im Skill [
 - **Die Doku in `docs/`**, die das Verhalten beschreibt, im selben Pull Request, kurz und für Menschen; Schritte für Agenten gehören in einen Skill, Interna eines Skripts in seine Kommentare. Das README, wenn eine Funktion, die Nutzer sehen, dazukommt, sich ändert oder wegfällt.
 - **Änderungen am Aussehen** mit Screenshots vorher und nachher in der Beschreibung; die Bilder für „vorher“ entstehen vor der ersten Änderung.
 - **Welche Tests:** Unit-Tests für reine Funktionen wie den Reconciler und die Ableitung des Soll-Zustands, Integrationstests in `crates/*/tests` gegen das festgelegte Syncthing, Vitest für Logik der Oberfläche, Playwright in `e2e/` für das, was jemand in der Oberfläche tut.
-- **Screenshots** nach einer Änderung am Aussehen: **Actions → Update screenshots → Run workflow**, dann die neuen Bilder ansehen.
+- **Bilder in `docs/`** nach einer Änderung am Aussehen: **Actions → Update screenshots → Run workflow**, dann die neuen Bilder ansehen.
 - **Texte der Oberfläche** kommen aus `web/messages/de.json` und `en.json` (Paraglide, Deutsch ist die Grundsprache); ein neuer Schlüssel kommt in beide. Einzahl und Mehrzahl sind eigene Schlüssel (`…_one`/`…_other`), ausgewählt mit `byCount`. Das inlang-Plugin wird aus `node_modules` geladen, nicht von einem CDN.
 - **Oberfläche und Zentrale:** `web/` spricht mit der Zentrale nur über `web/src/api/types.ts` (Zod-Schemas als Spiegel von `crates/zentrale/src/api`); beide ändern sich zusammen. Die Demodaten in `web/src/demo/` (für `bun run dev:demo`, E2E-Tests und Screenshots) ziehen mit.
 
