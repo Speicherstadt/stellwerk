@@ -22,6 +22,8 @@ Eine zentrale Weboberfläche für Syncthing auf deinem Server: Open Source, ohne
 [Dokumentation](https://speicherstadt.org/stellwerk/) •
 [Entwicklung](#entwicklung)
 
+<sub>English: keep files up to date on every computer in a small business, without a cloud or a file server. A central web UI for Syncthing on your own server decides which device gets which folder and sets up both sides automatically, so nobody has to click "accept" on each machine; the server keeps a full, versioned copy of every folder. The app is in German and English; the [documentation](https://speicherstadt.org/stellwerk/) is in German.</sub>
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/screenshot-dark.png">
   <img src="docs/screenshot.png" alt="Stellwerk-Übersicht: eine Matrix aus Ordnern und Geräten, die zeigt, welches Gerät jeden Syncthing-Ordner sendet, empfängt oder nicht hat, mit einem Entwurf aus zwei Änderungen, die noch angewendet werden" width="900">
