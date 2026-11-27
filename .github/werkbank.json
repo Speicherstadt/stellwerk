@@ -1,0 +1,12 @@
+{
+  "$kommentar": "Einstellungen für die Werkbank (https://github.com/Speicherstadt/werkbank); Standards in werkzeug/konfiguration.ts. Funktionen zählt die Werkbank nur in JavaScript und TypeScript; in Rust gilt die Grenze aus AGENTS.md ohne Prüfung.",
+  "board": null,
+  "anleitung": "https://speicherstadt.org/stellwerk/mitwirken.html#wenn-eine-pruefung-anschlaegt",
+  "uebernehmen": "https://speicherstadt.org/stellwerk/mitwirken.html#etwas-uebernehmen",
+  "konventionen": "AGENTS.md, Arbeitsweise",
+  "code": ["^(crates/[^/]+/src/.*\\.rs|web/src/.*\\.tsx?)$"],
+  "funktionen": ["^web/src/.*\\.tsx?$"],
+  "erzeugt": ["routeTree\\.gen\\.ts$", "^web/src/paraglide/"],
+  "heikel": ["^crates/engine/src/(pin|reconcile|reconcile_tests|apply)\\.rs$"],
+  "grosseDateien": ".checks/large-files.txt"
+}

@@ -34,6 +34,7 @@ nav:
   - Fehlersuche: troubleshooting.md
   - Architektur: architecture.md
   - Entwicklung: development.md
+  - Mitwirken: mitwirken.md
 
 theme:
   name: material

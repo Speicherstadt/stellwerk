@@ -1,8 +1,9 @@
 # Entwicklung
 
 Wie das Repository aufgebaut ist, wie du Stellwerk aus dem Quellcode baust und startest, wie es
-getestet wird und wie ein Release entsteht. Die Regeln für Änderungen stehen in
-[CLAUDE.md](https://github.com/Speicherstadt/stellwerk/blob/main/CLAUDE.md); sie gelten auch für
+getestet wird und wie ein Release entsteht. Wie ein Beitrag entsteht, steht in
+[Mitwirken](mitwirken.md), die Regeln für Code und Agenten in
+[AGENTS.md](https://github.com/Speicherstadt/stellwerk/blob/main/AGENTS.md); sie gelten auch für
 Menschen.
 
 ## Repository
@@ -103,12 +104,14 @@ keine Discovery, keine Relays.
 
 | Workflow | Wann | Tut |
 |---|---|---|
-| `ci.yml` | jeder Push auf `main` und jeder Pull Request (nicht bei reinen Doku-Änderungen) | Rust: fmt, clippy und Tests (`cargo nextest`, jeder Test in einem eigenen Prozess, alle gleichzeitig) unter Linux, Windows und macOS, danach der Smoke-Test des Dienstes mit dem Agenten, den die Tests gebaut haben; Web-Checks; `bun checks` (bei einem Pull Request mit `bun checks pr`); E2E im Playwright-Image; das Docker-Image wird gebaut und gestartet. Ein Pull Request führt nur aus, was er kaputt machen kann (`scripts/ci-changes.sh`): Eine Änderung nur in `web/` überspringt Rust, eine nur in `crates/` die Checks der Oberfläche, und das Image wird nur gebaut, wenn sich `docker/`, eine Lockfile oder eine `package.json` geändert hat |
+| `ci.yml` | jeder Push auf `main` und jeder Pull Request (nicht bei reinen Änderungen an Doku, Skills oder `.github/werkbank.json`) | Rust: fmt, clippy und Tests (`cargo nextest`, jeder Test in einem eigenen Prozess, alle gleichzeitig) unter Linux, Windows und macOS, danach der Smoke-Test des Dienstes mit dem Agenten, den die Tests gebaut haben; Web-Checks; `bun checks`; E2E im Playwright-Image; das Docker-Image wird gebaut und gestartet. Ein Pull Request führt nur aus, was er kaputt machen kann (`scripts/ci-changes.sh`): Eine Änderung nur in `web/` überspringt Rust, eine nur in `crates/` die Checks der Oberfläche, und das Image wird nur gebaut, wenn sich `docker/`, eine Lockfile oder eine `package.json` geändert hat |
+| `pr-regeln.yml` | jeder Pull Request, auch Entwürfe | die Regeln am Pull Request aus der [Werkbank](https://github.com/Speicherstadt/werkbank), eingestellt in `.github/werkbank.json`: Titel, Verweise auf Issues, neue Abhängigkeiten, Skills, Hinweise auf lange Funktionen, gewachsene Dateien, Code ohne Doku und Fix ohne Test ([Mitwirken](mitwirken.md#automatische-pruefungen)); `pr-regeln-kommentar.yml` schreibt das Ergebnis als Kommentar |
+| `board.yml`, `uebernehmen.yml` | Issues und Pull Requests | schieben die Karten im Board und verarbeiten `/übernehmen` und `/freigeben` ([Mitwirken](mitwirken.md#etwas-uebernehmen)); ohne Board in `.github/werkbank.json` tun sie nichts |
 | `agents.yml` | Pushes auf `main`, aus `release.yml` oder von Hand | der Agent für jede Plattform; unter Windows auch der Installer und sein Test für stilles Installieren und Deinstallieren; `SHA256SUMS` und die Installationsskripte. Auf `main` hält er den Cache der Release-Builds warm, und ein kaputter Release-Build fällt dort auf |
 | `docs.yml` | Pushes auf `main` und Pull Requests, die `docs/`, `overrides/`, `mkdocs.yml`, `requirements-docs.txt` oder `web/` ändern | baut die Doku mit [Zensical](https://zensical.org/), dem Nachfolger von MkDocs Material (`zensical build --strict`; das Datum unter jeder Seite schreibt `scripts/docs-revision-date` aus dem letzten Commit ihrer Datei, bis Zensical es selbst kann; das Plugin `privacy` lädt Schriften und das Mermaid-Skript beim Bauen herunter, so lädt die Seite nichts von Dritten) sowie die Demo ohne Server (`bun run build:demo` nach `site/demo`); auf `main` veröffentlicht er beides auf GitHub Pages |
 | `screenshots.yml` | von Hand: **Actions → Update screenshots** | erzeugt die Bilder in `docs/` aus den Demodaten und committet sie |
 | `bump.yml` | von Hand: **Actions → Bump version** | erhöht die Version und taggt sie, das startet `release.yml` |
-| `release.yml` | ein Tag `vX.Y.Z`, oder von Hand | CI, Agenten, das Multi-Arch-Image auf Docker Hub und GHCR, das GitHub-Release mit den Agenten |
+| `release.yml` | ein Tag `vX.Y.Z`, oder von Hand | CI, Agenten, das Multi-Arch-Image auf Docker Hub und GHCR, das GitHub-Release mit den Agenten; danach schließt es die Issues, die seit der vorigen Version mit `Umgesetzt #…` gemergt wurden |
 
 Die wiederverwendbaren Teile (Bump, „tested on main“, Docker-Release, Screenshots) kommen aus
 [firsttris/workflows](https://github.com/firsttris/workflows).
@@ -149,8 +152,9 @@ pip install -r requirements-docs.txt
 zensical serve                   # http://127.0.0.1:8000, lädt bei Änderungen neu
 ```
 
-Die README und diese Dokumentation gibt es nur auf Deutsch; Code, Kommentare, Commits und Pull
-Requests sind auf Englisch, die Oberfläche der App auf Deutsch und Englisch.
+Die README und diese Dokumentation gibt es nur auf Deutsch, in einfachem Deutsch mit „du“. Eine
+übersetzte Überschrift behält ihren Anker mit `{ #id }`, wenn andere Seiten, die README oder Code
+auf sie verlinken.
 
 Die Bilder kommen aus `bun run screenshots` oder **Actions → Update screenshots**; bearbeite sie
 nie von Hand. Derselbe Befehl erzeugt `docs/social-preview.png` (1280 × 640) aus
