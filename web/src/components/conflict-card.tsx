@@ -65,7 +65,13 @@ function Side({
           {m.conflict_no_preview()}
         </p>
       )}
-      <Button variant="outline" size="sm" onClick={onKeep} disabled={disabled || !file}>
+      <Button
+        variant="outline"
+        size="sm"
+        className="self-start"
+        onClick={onKeep}
+        disabled={disabled || !file}
+      >
         {keepLabel}
       </Button>
     </div>

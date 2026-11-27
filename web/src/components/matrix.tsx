@@ -311,7 +311,7 @@ function FolderRow({
       </th>
       <td className="border-l border-muted p-2">
         <div
-          className="flex h-11 w-full items-center justify-center gap-1.5 rounded-md border border-border bg-muted text-[13px] font-medium"
+          className="flex h-9 w-full items-center justify-center gap-1.5 rounded-md border border-border bg-muted text-[13px] font-medium"
           title={m.matrix_hub_cell_title({ folder: folder.label })}
         >
           <Database className="size-3.5" aria-hidden="true" />
@@ -370,7 +370,7 @@ function MatrixCell({
         title={label}
         onClick={onCycle}
         className={cn(
-          "relative flex h-11 w-full cursor-pointer items-center justify-center gap-1.5 rounded-md border text-[13px] font-medium transition-transform hover:-translate-y-px",
+          "relative flex h-9 w-full cursor-pointer items-center justify-center gap-1.5 rounded-md border text-[13px] font-medium transition-transform hover:-translate-y-px",
           CELL_STYLE[mode],
           changed && "ring-2 ring-info-accent ring-offset-2 ring-offset-background",
         )}

@@ -37,7 +37,7 @@ export function DialogContent({
             )}
           </div>
           <Primitive.Close
-            className="-mt-1 -mr-2 grid size-10 cursor-pointer place-items-center rounded-md hover:bg-muted"
+            className="-mt-1 -mr-2 grid size-9 cursor-pointer place-items-center rounded-md hover:bg-muted"
             aria-label={m.dialog_close()}
           >
             <X className="size-4" />

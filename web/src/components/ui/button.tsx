@@ -14,9 +14,9 @@ const buttonVariants = cva(
         destructive: "border border-danger/40 bg-background text-danger hover:bg-danger-surface",
       },
       size: {
-        default: "h-10 px-3.5",
-        sm: "h-9 px-3",
-        icon: "size-10",
+        default: "h-9 px-3.5",
+        sm: "h-8 px-3",
+        icon: "size-9",
       },
     },
     defaultVariants: { variant: "default", size: "default" },
